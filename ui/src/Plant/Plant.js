@@ -10,7 +10,6 @@ export default class Plant extends React.Component {
         this.state = {
             plant: {},
             wateredToday:false,
-            // waterBtnClass: "water-btn";
         }
     }
 
@@ -28,9 +27,6 @@ export default class Plant extends React.Component {
 
         let plant = this.props.plant;
         let json = {}
-        // plant.entries(function(value, prop){
-        //     json[prop] = value
-        // });
 
         for (const [key, value] of Object.entries(plant)) {
             json[key] = value;
@@ -47,16 +43,9 @@ export default class Plant extends React.Component {
 
         delete json._id;
 
-        let headers = new Headers();
-
-        headers.append('Content-Type', 'application/json');
-        headers.append('Accept', 'application/json');
-        headers.append('Origin',url);
-
         fetch(url, {
             mode: 'no-cors',
             method: 'POST',
-            // headers: headers,
             body: JSON.stringify(json),
         });
     }
@@ -81,10 +70,7 @@ export default class Plant extends React.Component {
                 <p className="plant-name">{this.props.plant.plant_name}</p>
                 <p><div className="plant-detail-header">Next watering day: </div><div className="plant-detail">{this.dateDisplayer(this.props.plant.next_watering_date)}</div></p>
                 <p><div className="plant-detail-header">Last watered: </div><div className="plant-detail">{this.dateDisplayer(this.props.plant.last_watered_date)}</div></p>
-                {/* <p><div className="plant-detail-header">Days between watering: </div><div className="plant-detail">{this.props.plant.days_between_watering}</div></p> */}
                 
             </Fragment>)
     }
 }
-//{"days_between_watering": 7, "details": "stuff", 
-//"id": 1, "plant_name": "Ficus", "user_id": 123}]

@@ -39,13 +39,7 @@ export default class Plants extends React.Component {
 
     displayPlants() {
         return ( <Container fluid id="plantTable">
-            {/* <thead>
-                <tr>
-                </tr>
-            </thead> */}
-            {/* <tbody> */}
                 {this.displayRows()}
-            {/* </tbody> */}
         </Container> )
     }
 

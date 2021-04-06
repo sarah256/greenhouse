@@ -5,7 +5,6 @@ COLLECTION_NAME = 'greenhouse'
 
 class MongoPlant(object):
   def __init__(self):
-    # self.client = MongoClient("mongodb://localhost:27017/")  
     self.db = MongoClient("mongodb://localhost:27017/", authSource="admin", username="mongo_user",
                  password="mongo_secret").greenhouse # TODO implement real user/pass
 

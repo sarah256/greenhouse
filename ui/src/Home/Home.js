@@ -46,7 +46,6 @@ export default class Home extends React.Component {
                 plants: plants,
             });
         });
-        // this.props.reloadPlants = false;
     }
 
     triggerNewPlantPopup() {

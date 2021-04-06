@@ -15,9 +15,7 @@ export default class TodaysPlants extends React.Component {
     }
 
     async componentDidMount() {
-        // console.log(this.state.plants);
         this.filterTodaysPlants();
-        // console.log(this.state.plants);
     }
 
     filterTodaysPlants() {
@@ -26,7 +24,6 @@ export default class TodaysPlants extends React.Component {
         let today = new Date();
         today.setDate(today.getDate());
 
-        // let waterBtn = this.state.wateredToday || lastWatered.getDate() === today.getDate() ? "water-btn-blue" : "water-btn";
         for(let i=0;i<plants.length;i++) {
             let plant = plants[i];
             let nextWater = new Date(plant.next_watering_date);
