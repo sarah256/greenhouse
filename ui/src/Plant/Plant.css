@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;1,300&display=swap');
+
+#plantImg {
+    width: 44%;
+    padding-bottom: 12px;
+}
+
+.plant-name {
+    font-weight: bolder;
+}
+
+.plant-detail-header {
+    font-weight: 300;
+    font-style: italic;
+}
+
+.btn-group {
+    position: relative;
+    float: right;
+}
+
+.water-btn {
+    border-radius: 15px;
+    padding-right: 9px;
+    padding-left: 9px;
+}
+
+.water-btn-blue {
+    border-radius: 15px;
+    padding-right: 9px;
+    padding-left: 9px;
+    color: blue;
+}
+
+.expand-btn {
+    border-radius: 15px;
+    padding-right: 9px;
+    padding-left: 9px;
+    margin-left: 5px;
+}

@@ -1,0 +1,39 @@
+label {
+    padding-top: 20px;
+}
+
+.popup-body {
+    width: 25vw;
+    height: 30vw;
+    font-family: 'Fira Sans', sans-serif;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    0 4px 8px 0 rgba(0,0,0,0.2);  /* Firefox 3.5 - 3.6 */
+    box-shadow:         0 4px 8px 0 rgba(0,0,0,0.2); /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+    text-align: left;
+    background-color: white;
+    display: table;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.close-btn {
+    position: relative;
+    float: right;
+    margin: 10px;
+    background-color: white;
+    border: 0.5px, solid, black;
+    border-radius: 5px;
+}
+
+.submit-btn {
+    margin-top: 25px;
+}
+
+.plant-form {
+    display: table;
+    margin: auto;
+    /* margin-left:auto; */
+    position: relative;
+  /* top: 0; left: 0; bottom: 0; right: 0; */
+}
