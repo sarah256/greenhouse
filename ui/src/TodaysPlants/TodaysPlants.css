@@ -18,3 +18,13 @@
     padding: 16px;
     background-color: white;
 }
+
+
+
+.fa-icon {
+    padding-right: 5px;
+}
+
+.no-display {
+    display: none;
+}

@@ -6,6 +6,7 @@ import './Home.css';
 import "react-datetime/css/react-datetime.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTint } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import logo from "./logo.jpg";
 
 export default class Home extends React.Component {
@@ -17,6 +18,8 @@ export default class Home extends React.Component {
             reloadPlants: false,
             loading: true,
             plants: [],
+            todaysPlants: [],
+            plantsToWaterToday: false,
         };
     }
 
@@ -45,6 +48,40 @@ export default class Home extends React.Component {
                 loading: false,
                 plants: plants,
             });
+            that.filterTodaysPlants(plants);
+        });
+    }
+
+    filterTodaysPlants(plants) {
+        let todaysPlantsArr = [];
+        // let plants = this.state.plants;
+        let today = new Date();
+        today.setDate(today.getDate());
+
+        for(let i=0;i<plants.length;i++) {
+            let plant = plants[i];
+            let nextWater = new Date(plant.next_watering_date);
+            nextWater.setDate(nextWater.getDate());
+            console.log(plant.next_watering_date.slice(0,10));
+            console.log(nextWater);
+            // console.log(today.toISOString().slice(0,10));
+            // if(plant.next_watering_date.slice(0,10) === today.toISOString().slice(0,10)) {
+            //     todaysPlantsArr.push(plant);
+            // }
+            console.log(nextWater >= today);
+            if(nextWater >= today) {
+                todaysPlantsArr.push(plant);
+            }
+        }
+        let waterToday;
+        if(todaysPlantsArr.length>0 ) {
+            waterToday = true;
+        }else{
+            waterToday = false;
+        }
+        this.setState({
+            todaysPlants: todaysPlantsArr,
+            plantsToWaterToday: waterToday,
         });
     }
 
@@ -76,20 +113,49 @@ export default class Home extends React.Component {
             popupClass = "popup";
             popupBackgroundClass = "popup-background";
         }
+        let todaysPlants = null;
+        if(this.state.plantsToWaterToday) {
+            <div className="wrapper-todays-plants">
+                <TodaysPlants plants={this.state.todaysPlants}/>
+            </div>
+        }
         return(
-            <Fragment><div className={popupBackgroundClass}></div>
-                <div className="logo-div"><img alt="" src={logo} className="logo"></img><h1 className="title">greenhouse</h1></div>
-                <div className="wrapper-todays-plants">
-                    <TodaysPlants plants={this.state.plants}/>
-                </div>
-
-                <div className="wrapper-home">
-                    <h2>My plants</h2>
-                    <div className="btn-row"><div className="btn-div"><button onClick={() => this.triggerNewPlantPopup()}>Add new plant</button><p className="info">Select the <FontAwesomeIcon icon={faTint} /> button to indicate that the plant has been watered today</p></div>
+            <Fragment>
+                <div className={popupBackgroundClass}></div>
+                <div className="home-wrapper">
+                    <div className="logo-div">
+                        <img alt="" src={logo} className="logo"></img>
+                        <h1 className="title">greenhouse</h1>
+                    </div>
+                    <div className="header-wrapper">
+                    
+                        <div className="page-title-wrapper">
+                            <span className="span">
+                                <h2 className="page-title">My plants</h2>
+                                <h3>
+                                    <span>
+                                        <FontAwesomeIcon className="fa-icon" icon={faInfoCircle} />
+                                        No plants to water today
+                                    </span>
+                                </h3>
+                            </span>
+                        </div>
+                        <p className="info">
+                            Select the <FontAwesomeIcon icon={faTint} /> button to indicate that the plant has been watered today
+                        </p>
+                        {todaysPlants}
+                        
+                        <div className="btn-div">
+                            <button onClick={() => this.triggerNewPlantPopup()}>Add new plant</button>
+                        </div>
+                    </div>
+                        
                     <div className={popupClass}>
                         {popup}
-                    </div></div>
-                    <div><Plants reloadPlants={this.state.reloadPlants} plants={this.state.plants} loading={this.state.loading}/></div>
+                    </div>
+                    <div className="plant-table-wrapper">
+                        <Plants reloadPlants={this.state.reloadPlants} plants={this.state.plants} loading={this.state.loading}/>
+                    </div>
                 </div>
             </Fragment>
         )
