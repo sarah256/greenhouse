@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
 import './Plant.css';
 import plantImg from '../plant.jpeg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTint } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faTint } from '@fortawesome/free-solid-svg-icons';
 
 export default class Plant extends React.Component {
     constructor(props) {
@@ -14,7 +15,9 @@ export default class Plant extends React.Component {
     }
 
     dateDisplayer(dateStr) {
-        let date = new Date(dateStr.slice(0,10));
+        console.log("DateStr:", dateStr);
+        let date = new Date(dateStr.slice(0,10)+"T00:00:00-04:00");
+        console.log(date);
         return date.toDateString();
     }
 
@@ -56,6 +59,14 @@ export default class Plant extends React.Component {
         let lastWatered = new Date(this.props.plant.last_watered_date);
         lastWatered.setDate(lastWatered.getDate());
         let waterBtn = this.state.wateredToday || lastWatered.getDate() === today.getDate() ? "water-btn-blue" : "water-btn";
+
+        let needsWateringIconClass = "hidden-element";
+        let nextWater = new Date(this.props.plant.next_watering_date);
+        nextWater.setDate(nextWater.getDate());
+        if(nextWater <= today) {
+            needsWateringIconClass = "needs-water-icon";
+        }
+
         return (
             <Fragment>
                 <div>
@@ -68,8 +79,20 @@ export default class Plant extends React.Component {
                     </div>
                 </div>
                 <p className="plant-name">{this.props.plant.plant_name}</p>
-                <p><div className="plant-detail-header">Next watering day: </div><div className="plant-detail">{this.dateDisplayer(this.props.plant.next_watering_date)}</div></p>
-                <p><div className="plant-detail-header">Last watered: </div><div className="plant-detail">{this.dateDisplayer(this.props.plant.last_watered_date)}</div></p>
+                <p>
+                    <div className="plant-detail-header">Next watering day: </div>
+                    <div className="plant-detail">
+                        {this.dateDisplayer(this.props.plant.next_watering_date)}
+                    </div>
+                    <div className={needsWateringIconClass}>
+                        <FontAwesomeIcon className="fa-icon" icon={faInfoCircle} title="Needs water"/>
+                        Needs water
+                    </div>
+                </p>
+                <p>
+                    <div className="plant-detail-header">Last watered: </div>
+                    <div className="plant-detail">{this.dateDisplayer(this.props.plant.last_watered_date)}</div>
+                </p>
                 
             </Fragment>)
     }

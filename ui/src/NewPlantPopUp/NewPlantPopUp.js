@@ -21,15 +21,15 @@ export default class NewPlantPopUp extends React.Component {
         });
         json["user_id"] = 123;
         let date = json["last_watered_date"];
-        let dateTime = date + "T00:00:00.000000-00:00";
+        let dateTime = date + "T00:00:00.000000-04:00";
         json["last_watered_date"] = dateTime; // Need to append bc only DateTime objs are accepted ; EST timezone
+        console.log("Last watered: ", json["last_watered_date"]);
         
         let daysBetweenWatering = parseInt(json["days_between_watering"]);
         let nextWateringDate = new Date(date);
         nextWateringDate.setDate(nextWateringDate.getDate() + daysBetweenWatering);
         
         json["next_watering_date"] = nextWateringDate;
-        console.log(JSON.stringify(json));
 
         const url = "http://127.0.0.1:4433/plant";
 

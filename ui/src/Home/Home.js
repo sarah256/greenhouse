@@ -19,6 +19,7 @@ export default class Home extends React.Component {
             loading: true,
             plants: [],
             todaysPlants: [],
+            sortedPlants: [],
             plantsToWaterToday: false,
         };
     }
@@ -54,6 +55,7 @@ export default class Home extends React.Component {
 
     filterTodaysPlants(plants) {
         let todaysPlantsArr = [];
+        let otherPlantsArr = [];
         // let plants = this.state.plants;
         let today = new Date();
         today.setDate(today.getDate());
@@ -62,15 +64,15 @@ export default class Home extends React.Component {
             let plant = plants[i];
             let nextWater = new Date(plant.next_watering_date);
             nextWater.setDate(nextWater.getDate());
-            console.log(plant.next_watering_date.slice(0,10));
-            console.log(nextWater);
             // console.log(today.toISOString().slice(0,10));
             // if(plant.next_watering_date.slice(0,10) === today.toISOString().slice(0,10)) {
             //     todaysPlantsArr.push(plant);
             // }
-            console.log(nextWater >= today);
-            if(nextWater >= today) {
+            if(nextWater <= today) {
                 todaysPlantsArr.push(plant);
+            } else {
+                otherPlantsArr.push(plant);
+                // console.log(otherPlantsArr);
             }
         }
         let waterToday;
@@ -79,8 +81,11 @@ export default class Home extends React.Component {
         }else{
             waterToday = false;
         }
+        let sorted = todaysPlantsArr.concat(otherPlantsArr);
+        console.log(sorted);
         this.setState({
             todaysPlants: todaysPlantsArr,
+            sortedPlants: sorted,
             plantsToWaterToday: waterToday,
         });
     }
@@ -102,8 +107,12 @@ export default class Home extends React.Component {
         if (this.state.loading) {
             return <div>Loading...</div>
         }
-        if (!this.state.plants || this.state.plants.length === 0) {
-            return <div>No plants found</div>
+        let plants = (<div>No plants found</div>);
+        if (this.state.sortedPlants && this.state.sortedPlants.length > 0) {
+            plants = (
+                <div className="plant-table-wrapper">
+                    <Plants reloadPlants={this.state.reloadPlants} plants={this.state.sortedPlants} loading={this.state.loading}/>
+                </div>);
         }
         let popup = null;
         let popupClass = "hide-element";
@@ -114,10 +123,19 @@ export default class Home extends React.Component {
             popupBackgroundClass = "popup-background";
         }
         let todaysPlants = null;
+        let todaysPlantsPrefix = "No plants";
+        let todaysPlantsInfoClass = "";
         if(this.state.plantsToWaterToday) {
-            <div className="wrapper-todays-plants">
+            // todaysPlantsInfoClass = "hide-element";
+            todaysPlants = (<div className="wrapper-todays-plants">
                 <TodaysPlants plants={this.state.todaysPlants}/>
-            </div>
+            </div>);
+            let len = this.state.todaysPlants.length;
+            if(len === 1) {
+                todaysPlantsPrefix = "1 plant";
+            } else {
+                todaysPlantsPrefix = len.toString() + " plants";
+            }
         }
         return(
             <Fragment>
@@ -130,32 +148,36 @@ export default class Home extends React.Component {
                     <div className="header-wrapper">
                     
                         <div className="page-title-wrapper">
-                            <span className="span">
-                                <h2 className="page-title">My plants</h2>
-                                <h3>
+                            <span className="header-span">
+                                <h2 className="page-title">All Plants</h2>
+                                <h3 className={todaysPlantsInfoClass}>
                                     <span>
                                         <FontAwesomeIcon className="fa-icon" icon={faInfoCircle} />
-                                        No plants to water today
+                                        {todaysPlantsPrefix} to water today
                                     </span>
                                 </h3>
                             </span>
+                            {/* <div className="btn-div"> */}
+                                {/* </div> */}
                         </div>
-                        <p className="info">
-                            Select the <FontAwesomeIcon icon={faTint} /> button to indicate that the plant has been watered today
-                        </p>
-                        {todaysPlants}
-                        
-                        <div className="btn-div">
-                            <button onClick={() => this.triggerNewPlantPopup()}>Add new plant</button>
+                        <div className="info-bar-wrapper">
+                            <p className="info">
+                                Select the <FontAwesomeIcon icon={faTint} /> button to indicate that the plant has been watered today
+                            </p>
+                            <span>
+                                <button className="new-plant-btn" onClick={() => this.triggerNewPlantPopup()}>
+                                    + NEW PLANT
+                                </button>
+                            </span>
                         </div>
+                        {/* {todaysPlants} */}
                     </div>
                         
                     <div className={popupClass}>
                         {popup}
                     </div>
-                    <div className="plant-table-wrapper">
-                        <Plants reloadPlants={this.state.reloadPlants} plants={this.state.plants} loading={this.state.loading}/>
-                    </div>
+
+                    {plants}
                 </div>
             </Fragment>
         )

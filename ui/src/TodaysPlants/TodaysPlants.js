@@ -52,13 +52,11 @@ export default class TodaysPlants extends React.Component {
     }
 
     render() {
-        console.log(this.state.todaysPlants);
         if(this.state.todaysPlants.length === 0){
             return (
                 <div className="no-display"></div>
             )
         } else {
-            console.log(this.state.todaysPlants);
             return (
                 <div className="plants-div">
                     <h2>Plants to water today</h2>

@@ -1,31 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tinos&display=swap');
 #wrapperHome{
     z-index: 1;
     position: absolute;
 
 }
 
+.new-plant-btn {
+    border: solid #bc5952 2px;
+    float: left;
+    position: relative;
+    transition-duration: 0.2s;
+    background-color: #bc5952;
+    color: white;
+    border-radius: 20px;
+    float: right;
+    padding: 3px 9px;
+    font-size: 1em;
+    font-weight: 600;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.new-plant-btn:hover {
+    background-color:  white;
+    color: #bc5952;
+    border: solid #bc5952 2px;
+}
+
 button {
-    border: none;
+    border: solid #e2cfc5 2px;
     float: left;
     position: relative;
     transition-duration: 0.4s;
+    background-color: white;
+    color: #e2cfc5;
+    border-radius: 20px;
 }
 
 button:hover {
-    background-color:  #ffe294;
+    background-color:  white;
+    color: #98cde3;;
+    border: solid #98cde3 2px;
 }
 
 .info {
-    padding-top: 1.75rem;
+    /* padding-top: 1.75rem; */
+    display: inline;
 }
 
 .btn-div {
-    position: relative;
-    width: 100%;
+    /* position: relative; */
+    /* width: 100%; */
     height: 3vw;
-    margin-top: 1rem
+    margin-top: 1rem;
+    display: inline;
     /* margin-left: 5vw; */
     /* margin-left: 5vw; */
     /* margin-right: 5vw; */
@@ -75,7 +105,8 @@ h1 {
 
 h2 {
     /* display: inline-block; */
-    font-family: 'Zilla Slab', serif;
+    /* font-family: 'Zilla Slab', serif; */
+    font-family: 'Tinos', serif;
     font-size: 3rem;
     display: inline;
 }
@@ -92,7 +123,8 @@ h3 {
 }
 
 h3 span {
-    background-color:#6fc8ed;
+    /* background-color:#6fc8ed; */
+    background-color:#98cde3;
     border-radius: 10px;
     padding: 0.25rem;
     padding-right:0.4rem;
@@ -101,7 +133,6 @@ h3 span {
     top: 50%;
     margin-top: -10px;
     vertical-align: middle;
-
 }
 
 .header-wrapper {
@@ -120,13 +151,22 @@ h3 span {
     font-size: 3rem;
 }
 
-.span {
+.header-span {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
+    width: 100%;
 }
 
 .home-wrapper {
     padding-left: 5vw;
     padding-right: 5vw;
+}
+
+.info-bar-wrapper{
+    height: 35px;
+}
+
+.new-plant-btn-wrapper {
+    height: 35px;
 }
