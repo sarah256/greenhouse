@@ -83,19 +83,6 @@ button:hover {
     display:none;
 }
 
-.logo {
-    width: 60px;
-    /* display:inline; */
-    float: left;
-}
-
-.logo-div {
-    white-space:nowrap;
-    height:6rem;
-    padding-right: 1.8vw;
-    padding-top: 2vw;
-}
-
 h1 {
     /* display:inline; */
     float: left;
@@ -135,16 +122,19 @@ h3 span {
     vertical-align: middle;
 }
 
-.header-wrapper {
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 30px;
+.page-header-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    display: inline-block;
+    width: 100%;
 }
 
 .page-title-wrapper  {
     /* padding-top:10px; */
     width: 100%;
     padding-bottom: 10px;
+    display: inline;
 }
 
 .page-title {
@@ -165,8 +155,11 @@ h3 span {
 
 .info-bar-wrapper{
     height: 35px;
+    display: inline;
 }
 
 .new-plant-btn-wrapper {
     height: 35px;
+    display:inline;
+    vertical-align: middle;
 }

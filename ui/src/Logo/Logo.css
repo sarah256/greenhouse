@@ -1,0 +1,14 @@
+.logo {
+    width: 60px;
+    /* display:inline; */
+    float: left;
+}
+
+.logo-div {
+    /* white-space:nowrap; */
+    /* height:6rem; */
+    padding-top: 2vw;
+    display: inline;
+    height: 100%;
+    width: 30%;
+}

@@ -7,7 +7,6 @@ import "react-datetime/css/react-datetime.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTint } from '@fortawesome/free-solid-svg-icons';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import logo from "./logo.jpg";
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -140,13 +139,8 @@ export default class Home extends React.Component {
         return(
             <Fragment>
                 <div className={popupBackgroundClass}></div>
-                <div className="home-wrapper">
-                    <div className="logo-div">
-                        <img alt="" src={logo} className="logo"></img>
-                        <h1 className="title">greenhouse</h1>
-                    </div>
-                    <div className="header-wrapper">
-                    
+
+                    <div className="page-header-wrapper">
                         <div className="page-title-wrapper">
                             <span className="header-span">
                                 <h2 className="page-title">All Plants</h2>
@@ -164,12 +158,13 @@ export default class Home extends React.Component {
                             <p className="info">
                                 Select the <FontAwesomeIcon icon={faTint} /> button to indicate that the plant has been watered today
                             </p>
-                            <span>
+                            
+                        </div>
+                        <div className="new-plant-btn-wrapper">
                                 <button className="new-plant-btn" onClick={() => this.triggerNewPlantPopup()}>
                                     + NEW PLANT
                                 </button>
-                            </span>
-                        </div>
+                            </div>
                         {/* {todaysPlants} */}
                     </div>
                         
@@ -178,7 +173,6 @@ export default class Home extends React.Component {
                     </div>
 
                     {plants}
-                </div>
             </Fragment>
         )
     }

@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
+
+.page-name {
+    display: inline;
+    color:red;
+}
+
+.page-names {
+    display: inline;
+    vertical-align: middle;
+    height: 100%;
+    margin: 50px;
+}
+
+.header-wrap {
+   width: 100%;
+   padding-top: 2vw;
+   display: inline-block;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.link-title {
+    color: #ad9e97;
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: 10px 20px;
+    /* font-family: 'Roboto Mono', monospace; */
+    /* font-family: 'Josefin Sans', sans-serif; */
+}
+
+.link-title:hover {
+    color: #acbc8a;
+    text-decoration: none;
+}  
