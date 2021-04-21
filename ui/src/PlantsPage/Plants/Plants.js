@@ -1,5 +1,5 @@
 import React from "react";
-import Plant from '../Plant/Plant';
+import Plant from '../../Plant/Plant';
 import './Plants.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

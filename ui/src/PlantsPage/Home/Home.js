@@ -1,12 +1,10 @@
 import React, { Fragment } from "react";
 import Plants from '../Plants/Plants';
 import NewPlantPopUp from '../NewPlantPopUp/NewPlantPopUp';
-import TodaysPlants from '../TodaysPlants/TodaysPlants';
+import TodaysPlants from '../../TodaysPlants/TodaysPlants';
 import './Home.css';
 import "react-datetime/css/react-datetime.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTint } from '@fortawesome/free-solid-svg-icons';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import Header from "../Header/Header";
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -55,7 +53,6 @@ export default class Home extends React.Component {
     filterTodaysPlants(plants) {
         let todaysPlantsArr = [];
         let otherPlantsArr = [];
-        // let plants = this.state.plants;
         let today = new Date();
         today.setDate(today.getDate());
 
@@ -63,15 +60,10 @@ export default class Home extends React.Component {
             let plant = plants[i];
             let nextWater = new Date(plant.next_watering_date);
             nextWater.setDate(nextWater.getDate());
-            // console.log(today.toISOString().slice(0,10));
-            // if(plant.next_watering_date.slice(0,10) === today.toISOString().slice(0,10)) {
-            //     todaysPlantsArr.push(plant);
-            // }
             if(nextWater <= today) {
                 todaysPlantsArr.push(plant);
             } else {
                 otherPlantsArr.push(plant);
-                // console.log(otherPlantsArr);
             }
         }
         let waterToday;
@@ -123,9 +115,7 @@ export default class Home extends React.Component {
         }
         let todaysPlants = null;
         let todaysPlantsPrefix = "No plants";
-        let todaysPlantsInfoClass = "";
         if(this.state.plantsToWaterToday) {
-            // todaysPlantsInfoClass = "hide-element";
             todaysPlants = (<div className="wrapper-todays-plants">
                 <TodaysPlants plants={this.state.todaysPlants}/>
             </div>);
@@ -139,40 +129,12 @@ export default class Home extends React.Component {
         return(
             <Fragment>
                 <div className={popupBackgroundClass}></div>
+                <Header todaysPlantsPrefix={todaysPlantsPrefix}/>        
+                <div className={popupClass}>
+                    {popup}
+                </div>
 
-                    <div className="page-header-wrapper">
-                        <div className="page-title-wrapper">
-                            <span className="header-span">
-                                <h2 className="page-title">All Plants</h2>
-                                <h3 className={todaysPlantsInfoClass}>
-                                    <span>
-                                        <FontAwesomeIcon className="fa-icon" icon={faInfoCircle} />
-                                        {todaysPlantsPrefix} to water today
-                                    </span>
-                                </h3>
-                            </span>
-                            {/* <div className="btn-div"> */}
-                                {/* </div> */}
-                        </div>
-                        <div className="info-bar-wrapper">
-                            <p className="info">
-                                Select the <FontAwesomeIcon icon={faTint} /> button to indicate that the plant has been watered today
-                            </p>
-                            
-                        </div>
-                        <div className="new-plant-btn-wrapper">
-                                <button className="new-plant-btn" onClick={() => this.triggerNewPlantPopup()}>
-                                    + NEW PLANT
-                                </button>
-                            </div>
-                        {/* {todaysPlants} */}
-                    </div>
-                        
-                    <div className={popupClass}>
-                        {popup}
-                    </div>
-
-                    {plants}
+                {plants}
             </Fragment>
         )
     }

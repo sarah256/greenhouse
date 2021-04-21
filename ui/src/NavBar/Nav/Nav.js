@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Logo from '../Logo/Logo';
 import './Nav.css';
-import Home from '../Home/Home';
+import Home from '../../PlantsPage/Home/Home';
 import {
     BrowserRouter as Router,
     Switch,
@@ -41,13 +41,13 @@ export default class Nav extends React.Component {
                             renders the first one that matches the current URL. */}
                         <Switch>
                             <Route path="/plants">
-                                {/* <Home /> */}
+                                <Home />
                             </Route>
                             <Route path="/calendar">
                                 {/* <Home /> */}
                             </Route>
                             <Route path="/dashboard">
-                                <Home />
+                                {/* <Home /> */}
                             </Route>
                         </Switch>
                     </div>

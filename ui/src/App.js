@@ -1,6 +1,6 @@
 import './App.css';
-import Home from './Home/Home';
-import Nav from './Nav/Nav';
+import Home from './PlantsPage/Home/Home';
+import Nav from './NavBar/Nav/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -8,7 +8,6 @@ function App() {
     <div className="App">
       <div className="home-wrapper">
         <Nav />
-        <Home />
       </div>
     </div>
   );
