@@ -16,30 +16,7 @@ export default class TodaysPlants extends React.Component {
     }
 
     async componentDidMount() {
-        // this.filterTodaysPlants();
     }
-
-    // filterTodaysPlants() {
-    //     let todaysPlantsArr = [];
-    //     let plants = this.state.plants;
-    //     let today = new Date();
-    //     today.setDate(today.getDate());
-
-    //     for(let i=0;i<plants.length;i++) {
-    //         let plant = plants[i];
-    //         let nextWater = new Date(plant.next_watering_date);
-    //         nextWater.setDate(nextWater.getDate());
-    //         console.log(plant.next_watering_date.slice(0,10));
-    //         console.log(today.toISOString().slice(0,10));
-    //         if(plant.next_watering_date.slice(0,10) === today.toISOString().slice(0,10)) {
-    //             todaysPlantsArr.push(plant);
-    //         }
-    //     }
-    //     this.setState({
-    //         todaysPlants: todaysPlantsArr,
-    //         loading: false,
-    //     });
-    // }
 
     renderTodaysPlants(){
         let plantRow = this.state.todaysPlants;

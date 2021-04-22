@@ -15,9 +15,7 @@ export default class Plant extends React.Component {
     }
 
     dateDisplayer(dateStr) {
-        console.log("DateStr:", dateStr);
         let date = new Date(dateStr.slice(0,10)+"T00:00:00-04:00");
-        console.log(date);
         return date.toDateString();
     }
 

@@ -23,7 +23,6 @@ export default class NewPlantPopUp extends React.Component {
         let date = json["last_watered_date"];
         let dateTime = date + "T00:00:00.000000-04:00";
         json["last_watered_date"] = dateTime; // Need to append bc only DateTime objs are accepted ; EST timezone
-        console.log("Last watered: ", json["last_watered_date"]);
         
         let daysBetweenWatering = parseInt(json["days_between_watering"]);
         let nextWateringDate = new Date(date);
