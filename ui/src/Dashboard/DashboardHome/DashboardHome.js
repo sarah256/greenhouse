@@ -1,5 +1,6 @@
 import React from "react";
 import DayPanel from '../DayPanel/DayPanel';
+import Header from '../Header/Header';
 import './DashboardHome.css';
 import "react-datetime/css/react-datetime.css";
 import Container from 'react-bootstrap/Container';
@@ -52,11 +53,14 @@ export default class DashboardHome extends React.Component {
 
         return(
             <div>
-                <Container fluid>
-                    <Row>
-                        {this.displayPlantsByDay()}
-                    </Row>
-                </Container>
+                <Header></Header>
+                <div>
+                    <Container fluid>
+                        <Row>
+                            {this.displayPlantsByDay()}
+                        </Row>
+                    </Container>
+                </div>
             </div>
         )
     }

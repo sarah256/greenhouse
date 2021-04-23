@@ -1,4 +1,5 @@
 import React from "react";
+import "./DayPanel.css";
 
 export default class DayPanel extends React.Component {
     constructor(props) {
@@ -8,10 +9,23 @@ export default class DayPanel extends React.Component {
         };
     }
 
+    displaySmallPlants(plants) {
+        return plants.map((plant, id) => {
+            return (<p>{plant.plant_name}</p>);
+        });
+    }
+
     render() {
+        console.log(this.props.plants);
         return (
             <div className="day-content">
-                {this.props.day}
+                <div className="day-title">
+                    {this.props.day}
+                </div>
+                <div className="day-body">
+                    {/* {this.props.plants} */}
+                    {this.displaySmallPlants(this.props.plants)}
+                </div>
             </div>
         )
     }

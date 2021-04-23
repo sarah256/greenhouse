@@ -1,6 +1,36 @@
 .day-content {
-    background-color: blue;
-
+    /* border: white solid 0px; */
+    /* border-radius: 5px; */
+    height: 100%;
+    font-family: 'Fira Sans', sans-serif;
+    border-radius: 5px;
+    /* margin-top: 15px; */
+    /* margin-bottom: 15px; */
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    0 4px 8px 0 rgba(0,0,0,0.2);  /* Firefox 3.5 - 3.6 */
+    box-shadow:         0 4px 8px 0 rgba(0,0,0,0.2); /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+    text-align: left;
+    /* padding: 16px; */
+    background-color: white;
 }
 
-.day-title
+.day-title {
+    background-color: #c5b4ac;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: center;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.today-title {
+    background-color: #f2b477;
+    color: white;
+}
+
+.day-body {
+
+}

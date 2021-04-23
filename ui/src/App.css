@@ -38,3 +38,38 @@
     transform: rotate(360deg);
   }
 }
+
+/* Page Headers */
+
+.page-header-wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 30px;
+  display: inline-block;
+  width: 100%;
+}
+
+.page-title-wrapper  {
+  /* display: inline; */
+}
+
+.page-title {
+  font-size: 3rem;
+}
+
+.header-span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  width: 100%;
+}
+
+.info-bar-wrapper{
+  height: 35px;
+  display: inline;
+}
+
+.info {
+  /* padding-top: 1.75rem; */
+  display: inline;
+}
